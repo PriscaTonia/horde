@@ -17,7 +17,7 @@ const Navbar = () => {
 
       <section
         className={clsx(
-          "fixed right-0 top-0 flex h-screen w-full max-w-[90%] flex-col items-center gap-16 bg-white py-[34px] shadow-lg xl:relative xl:h-auto xl:max-w-[70%] xl:flex-row xl:justify-between xl:gap-10 xl:py-0 xl:shadow-none",
+          "fixed right-0 top-0 flex h-screen w-full max-w-[90%] flex-col items-center gap-16 bg-white py-[34px] shadow-lg xl:relative xl:h-auto xl:max-w-[70%] xl:flex-row xl:justify-between xl:gap-10 xl:bg-transparent xl:py-0 xl:shadow-none",
           isMobileSize && !show && "hidden",
         )}
       >

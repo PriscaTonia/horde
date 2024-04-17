@@ -22,6 +22,7 @@ const config: Config = {
       colors: {
         "app-purple": "#6057FF",
         "app-gray": "#817C7C",
+        "app-off-white": "#FBFAFF",
         "app-black-100": "#353535",
       },
     },

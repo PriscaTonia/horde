@@ -3,7 +3,7 @@ import { open_sans, inter } from "@/utils/font";
 import "./globals.css";
 import clsx from "clsx";
 import { Provider } from "@/utils/provider";
-import { Navbar } from "@/components";
+import { Footer, Navbar } from "@/components";
 
 export const metadata: Metadata = {
   title: "HORDE",
@@ -21,12 +21,13 @@ export default function RootLayout({
         className={clsx(
           open_sans.variable,
           inter.variable,
-          "mx-auto w-full max-w-[1440px]",
+          "bg-app-off-white mx-auto w-full max-w-[1440px]",
         )}
       >
         <Provider>
           <Navbar />
           {children}
+          <Footer />
         </Provider>
       </body>
     </html>

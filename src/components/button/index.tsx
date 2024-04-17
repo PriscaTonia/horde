@@ -12,11 +12,12 @@ const Btn = ({
   custom,
   variant = "primary",
   disabled,
+  type,
   icon,
 }: BtnProps) => {
   const class_name = clsx(
     "flex gap-1 items-center",
-    !custom && "border px-8 py-3 rounded-lg",
+    !custom && "border px-8 py-[10px] rounded-lg",
     size === "small" ? "w-fit" : "w-full",
     disabled && "bg-app-gray cursor-not-allowed bg-opacity-50 border-none",
     variant === "primary"
@@ -26,7 +27,12 @@ const Btn = ({
   );
 
   return (
-    <Button disabled={disabled} onClick={onclick} className={class_name}>
+    <Button
+      type={type}
+      disabled={disabled}
+      onClick={onclick}
+      className={class_name}
+    >
       {icon} {label}
     </Button>
   );
