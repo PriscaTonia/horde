@@ -8,3 +8,4 @@ export * from "./facebook";
 export * from "./github";
 export * from "./twofingers";
 export * from "./web";
+export * from "./switch";
