@@ -1,4 +1,4 @@
-import { Facebook, Github, Linkedin, Twitter, Twofingers, Web } from "@/icons";
+import { Facebook, Linkedin, Twitter } from "@/icons";
 import { Logo, Newsletter } from "@/modules";
 import Link from "next/link";
 import React from "react";
@@ -9,7 +9,7 @@ const Footer = () => {
       <Newsletter />
 
       {/* footer section */}
-      <footer className="font-inter order-3 flex flex-col gap-16 py-[38px] lg:order-2 lg:flex-row">
+      <footer className="order-3 flex flex-col gap-16 py-[38px] font-inter lg:order-2 lg:flex-row">
         <div className="flex w-full flex-col gap-8 lg:max-w-[27%]">
           <Logo />
 
@@ -113,7 +113,7 @@ const Footer = () => {
       {/* social icons */}
       <section className="order-1 flex flex-col justify-between gap-2 border-t border-[#EAECF0] py-8 lg:order-3 lg:flex-row lg:gap-10">
         <p className="text-base text-[#98A2B3]">
-          © 2077 Untitled UI. All rights reserved.
+          © 2024 Horde. All rights reserved.
         </p>
 
         <div className="flex items-center gap-3 sm:gap-6">
@@ -136,19 +136,11 @@ const product_list = [
     path: "/",
   },
   {
-    title: "Features",
-    path: "/",
-  },
-  {
-    title: "Solutions",
+    title: "Pricing",
     path: "/",
   },
   {
     title: "Tutorials",
-    path: "/",
-  },
-  {
-    title: "Pricing",
     path: "/",
   },
 ];
@@ -160,14 +152,6 @@ const company_list = [
   },
   {
     title: "Careers",
-    path: "/",
-  },
-  {
-    title: "News",
-    path: "/",
-  },
-  {
-    title: "Media Kit",
     path: "/",
   },
   {
@@ -189,14 +173,6 @@ const resources_list = [
     title: "Help Center",
     path: "/",
   },
-  {
-    title: "Tutorial",
-    path: "/",
-  },
-  {
-    title: "Support",
-    path: "/",
-  },
 ];
 
 const social_list = [
@@ -210,14 +186,6 @@ const social_list = [
   },
   {
     title: "Facebook",
-    path: "/",
-  },
-  {
-    title: "Instagram",
-    path: "/",
-  },
-  {
-    title: "TikTok",
     path: "/",
   },
 ];
@@ -235,14 +203,6 @@ const legal_list = [
     title: "Cookies",
     path: "/",
   },
-  {
-    title: "Settings",
-    path: "/",
-  },
-  {
-    title: "Contact",
-    path: "/",
-  },
 ];
 
 const icon_list = [
@@ -256,18 +216,6 @@ const icon_list = [
   },
   {
     icon: <Facebook />,
-    path: "/",
-  },
-  {
-    icon: <Github />,
-    path: "/",
-  },
-  {
-    icon: <Twofingers />,
-    path: "/",
-  },
-  {
-    icon: <Web />,
     path: "/",
   },
 ];
