@@ -25,7 +25,7 @@ interface Props {
 
 const variants = {
   open: { width: "284px" },
-  closed: { width: "120px" },
+  closed: { width: "100px" },
 };
 
 const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
@@ -105,37 +105,57 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
 
   return (
     <motion.aside
-      animate={isMobileSize || isOpen ? "closed" : "open"}
+      animate={
+        (isMobileSize && !isOpen) || (!isMobileSize && !isOpen)
+          ? "closed"
+          : "open"
+      }
       transition={{ duration: 0.5 }}
       variants={variants}
       className={clsx(
-        "relative  flex flex-col gap-6 bg-white p-6",
-        isMobileSize || isOpen ? "w-[120px]" : "w-[284px]",
+        "relative  flex flex-col gap-6 bg-white py-6",
+        (isMobileSize && !isOpen) || (!isMobileSize && !isOpen)
+          ? "w-[100px]"
+          : "w-[284px]",
       )}
     >
       <DashHamburger
         onClick={onCloseSidebar}
-        className="absolute -right-[35px] top-[29px] cursor-pointer"
+        className="absolute -right-[35px] top-[15px] cursor-pointer"
       />
 
-      <Logo textSize="small" />
+      {/* logo */}
+      <div className="px-3">
+        <Logo textSize="small" />
+      </div>
 
       {/* main links */}
       <div className="flex flex-col gap-3">
         {links?.map((c) => {
           return (
-            <Link
-              key={c?.id}
-              href={c?.path}
-              className={clsx(
-                "hover:bg- flex items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
-                pathname === c?.path ? "bg-app-purple text-white" : "",
-                (isMobileSize || isOpen) && "justify-center",
-              )}
-            >
-              <span>{c?.icon}</span>
-              {(isMobileSize || !isOpen) && <span>{c?.title}</span>}
-            </Link>
+            <div key={c?.id} className="flex gap-3">
+              <span
+                className={clsx(
+                  "h-full w-1 rounded-br-md rounded-tr-md bg-app-purple",
+                  pathname === c?.path ? "bg-app-purple" : "bg-transparent",
+                )}
+              ></span>
+
+              <Link
+                href={c?.path}
+                className={clsx(
+                  "flex w-full items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
+                  pathname === c?.path ? "bg-app-purple text-white" : "",
+                  isMobileSize && !isOpen && "justify-center",
+                  !isMobileSize && !isOpen && "justify-center",
+                )}
+              >
+                <span>{c?.icon}</span>
+                {((!isMobileSize && isOpen) || (isMobileSize && isOpen)) && (
+                  <span>{c?.title}</span>
+                )}
+              </Link>
+            </div>
           );
         })}
       </div>
@@ -145,18 +165,29 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
         <div className="flex flex-col gap-3">
           {lower_links?.map((c) => {
             return (
-              <Link
-                key={c?.id}
-                href={c?.path}
-                className={clsx(
-                  "hover:bg- flex items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
-                  pathname === c?.path ? "bg-app-purple text-white" : "",
-                  (isMobileSize || isOpen) && "justify-center",
-                )}
-              >
-                <span>{c?.icon}</span>
-                {(isMobileSize || !isOpen) && <span>{c?.title}</span>}
-              </Link>
+              <div key={c?.id} className=" flex gap-3 ">
+                <span
+                  className={clsx(
+                    "h-full w-1 rounded-br-md rounded-tr-md bg-app-purple",
+                    pathname === c?.path ? "bg-app-purple" : "bg-transparent",
+                  )}
+                ></span>
+
+                <Link
+                  href={c?.path}
+                  className={clsx(
+                    "flex w-full items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
+                    pathname === c?.path ? "bg-app-purple text-white" : "",
+                    isMobileSize && !isOpen && "justify-center",
+                    !isMobileSize && !isOpen && "justify-center",
+                  )}
+                >
+                  <span>{c?.icon}</span>
+                  {((!isMobileSize && isOpen) || (isMobileSize && isOpen)) && (
+                    <span>{c?.title}</span>
+                  )}
+                </Link>
+              </div>
             );
           })}
         </div>
@@ -164,7 +195,7 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
         <hr />
 
         {/* profile and signout section */}
-        <div className="relative flex gap-2">
+        <div className="relative flex flex-col gap-2 px-3 md:px-6 lg:flex-row">
           <Image
             src="/sidebar/Avatar.png"
             alt="avatar"
@@ -172,11 +203,10 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
             height={40}
             className="rounded-full"
           />
-
-          {(isMobileSize || !isOpen) && (
+          {((!isMobileSize && isOpen) || (isMobileSize && isOpen)) && (
             <p className="test-sm flex flex-col font-bold text-[#1C1C1C]">
               John Saint
-              <span className="font-normal">JohnS@emailyyy.com</span>
+              <span className="text-xs font-normal">JohnS@emailyyy.com</span>
             </p>
           )}
 
