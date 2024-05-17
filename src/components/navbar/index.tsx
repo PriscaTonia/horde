@@ -22,18 +22,18 @@ const Navbar = () => {
         )}
       >
         {/* mobile close icon */}
-        <div className="hover:bg-app-purple mx-10 place-self-end rounded-full p-3 hover:bg-opacity-20 xl:hidden">
+        <div className="mx-10 place-self-end rounded-full p-3 hover:bg-app-purple hover:bg-opacity-20 xl:hidden">
           <CloseIcon onClick={() => setShow(false)} />
         </div>
 
         {/* links */}
-        <div className="font-inter flex flex-col items-center gap-[34.18px] xl:flex-row">
+        <div className="flex flex-col items-center gap-[34.18px] font-inter xl:flex-row">
           {nav_links.map((i) => {
             return (
               <Link
                 key={i.title}
                 href={i.path}
-                className="text-app-black-100 hover:border-app-purple border-b-2 border-transparent pb-1 text-lg font-medium capitalize"
+                className="border-b-2 border-transparent pb-1 text-lg font-medium capitalize text-app-black-100 hover:border-app-purple"
               >
                 {i.title}
               </Link>
@@ -44,8 +44,8 @@ const Navbar = () => {
         {/* buttons */}
         <div className="flex items-center gap-[46px]">
           <Link
-            href="/"
-            className="text-app-black-100 hover:bg-app-purple rounded-lg px-8 py-3 text-lg font-semibold capitalize hover:bg-opacity-20"
+            href="/dashboard/overview"
+            className="rounded-lg px-8 py-3 text-lg font-semibold capitalize text-app-black-100 hover:bg-app-purple hover:bg-opacity-20"
           >
             Login
           </Link>
@@ -56,7 +56,7 @@ const Navbar = () => {
 
       {/* mobile hamburger icon */}
       <div
-        className="hover:bg-app-purple rounded-full p-2 hover:bg-opacity-20 xl:hidden"
+        className="rounded-full p-2 hover:bg-app-purple hover:bg-opacity-20 xl:hidden"
         onClick={() => setShow(true)}
       >
         <HamburgerIcon />
