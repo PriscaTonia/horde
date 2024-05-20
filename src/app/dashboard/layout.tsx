@@ -1,5 +1,5 @@
 "use client";
-import { Sidebar } from "@/components";
+import { DashNavbar, Sidebar } from "@/components";
 import { useEffect, useState } from "react";
 import { useMedia } from "react-use";
 
@@ -28,7 +28,10 @@ export default function DashboardLayout({
         isMobileSize={isMobileSize}
       />
 
-      <div className="w-full">{children}</div>
+      <div className="w-full">
+        <DashNavbar />
+        {children}
+      </div>
     </section>
   );
 }

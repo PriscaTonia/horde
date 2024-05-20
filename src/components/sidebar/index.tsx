@@ -28,6 +28,11 @@ const variants = {
   closed: { width: "100px" },
 };
 
+const text_variants = {
+  open: { display: "flex" },
+  closed: { display: "none" },
+};
+
 const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
   const pathname = usePathname();
 
@@ -110,10 +115,10 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
           ? "closed"
           : "open"
       }
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8 }}
       variants={variants}
       className={clsx(
-        "relative  flex flex-col gap-6 bg-white py-6",
+        "relative  flex flex-col gap-6 border-r border-[#E0E0E0] bg-white py-6",
         (isMobileSize && !isOpen) || (!isMobileSize && !isOpen)
           ? "w-[100px]"
           : "w-[284px]",
@@ -136,7 +141,7 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
             <div key={c?.id} className="flex gap-3">
               <span
                 className={clsx(
-                  "h-full w-1 rounded-br-md rounded-tr-md bg-app-purple",
+                  "h-full min-w-2 rounded-br-md rounded-tr-md bg-app-purple",
                   pathname === c?.path ? "bg-app-purple" : "bg-transparent",
                 )}
               ></span>
@@ -144,16 +149,23 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
               <Link
                 href={c?.path}
                 className={clsx(
-                  "flex w-full items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
-                  pathname === c?.path ? "bg-app-purple text-white" : "",
+                  "ml-3 mr-6 flex w-full items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
+                  pathname === c?.path
+                    ? "bg-app-purple text-white"
+                    : "bg-white",
                   isMobileSize && !isOpen && "justify-center",
                   !isMobileSize && !isOpen && "justify-center",
                 )}
               >
                 <span>{c?.icon}</span>
-                {((!isMobileSize && isOpen) || (isMobileSize && isOpen)) && (
-                  <span>{c?.title}</span>
-                )}
+
+                <motion.span
+                  animate={!isOpen ? "closed" : "open"}
+                  transition={{ duration: 0.3 }}
+                  variants={text_variants}
+                >
+                  {c?.title}
+                </motion.span>
               </Link>
             </div>
           );
@@ -168,7 +180,7 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
               <div key={c?.id} className=" flex gap-3 ">
                 <span
                   className={clsx(
-                    "h-full w-1 rounded-br-md rounded-tr-md bg-app-purple",
+                    "h-full min-w-2 rounded-br-md rounded-tr-md bg-app-purple",
                     pathname === c?.path ? "bg-app-purple" : "bg-transparent",
                   )}
                 ></span>
@@ -176,16 +188,22 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
                 <Link
                   href={c?.path}
                   className={clsx(
-                    "flex w-full items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
-                    pathname === c?.path ? "bg-app-purple text-white" : "",
+                    "ml-3 mr-6 flex  w-full items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
+                    pathname === c?.path
+                      ? "bg-app-purple text-white"
+                      : "bg-white",
                     isMobileSize && !isOpen && "justify-center",
                     !isMobileSize && !isOpen && "justify-center",
                   )}
                 >
                   <span>{c?.icon}</span>
-                  {((!isMobileSize && isOpen) || (isMobileSize && isOpen)) && (
-                    <span>{c?.title}</span>
-                  )}
+                  <motion.span
+                    animate={!isOpen ? "closed" : "open"}
+                    transition={{ duration: 0.3 }}
+                    variants={text_variants}
+                  >
+                    {c?.title}
+                  </motion.span>
                 </Link>
               </div>
             );

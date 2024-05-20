@@ -32,6 +32,7 @@ const Btn = ({
       disabled={disabled}
       onClick={onclick}
       className={class_name}
+      unstyled
     >
       {icon} {label}
     </Button>
