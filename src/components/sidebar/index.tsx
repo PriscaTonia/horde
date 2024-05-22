@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import SupportIcon from "@/icons/support";
 import Image from "next/image";
+import { useMedia } from "react-use";
 
 interface Props {
   onCloseSidebar: () => void;
@@ -23,18 +24,21 @@ interface Props {
   isMobileSize: boolean;
 }
 
-const variants = {
-  open: { width: "284px" },
-  closed: { width: "100px" },
-};
-
-const text_variants = {
-  open: { display: "flex" },
-  closed: { display: "none" },
-};
-
 const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
   const pathname = usePathname();
+  const isScreenSmall = useMedia("(max-width: 420px)", false);
+
+  console.log(isScreenSmall);
+
+  const variants = {
+    open: { width: "284px" },
+    closed: { width: isScreenSmall ? "70px" : "100px" },
+  };
+
+  const text_variants = {
+    open: { display: "flex" },
+    closed: { display: "none" },
+  };
 
   const links = [
     {
@@ -119,30 +123,36 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
       variants={variants}
       className={clsx(
         "relative  flex flex-col gap-6 border-r border-[#E0E0E0] bg-white py-6",
-        (isMobileSize && !isOpen) || (!isMobileSize && !isOpen)
-          ? "w-[100px]"
-          : "w-[284px]",
+        (!isMobileSize && isOpen) || (isMobileSize && isOpen)
+          ? "w-[284px]"
+          : isScreenSmall
+            ? "w-[70px]"
+            : "w-[100px]",
       )}
     >
       <DashHamburger
         onClick={onCloseSidebar}
-        className="absolute -right-[35px] top-[15px] cursor-pointer"
+        className={clsx(
+          "absolute -right-[35px]  cursor-pointer",
+          isScreenSmall ? "top-[25px]" : "top-[15px]",
+        )}
       />
 
       {/* logo */}
-      <div className="px-3">
-        <Logo textSize="small" />
+      <div className="px-1 sm:px-3">
+        <Logo textSize={isScreenSmall ? "extra-small" : "small"} />
       </div>
 
       {/* main links */}
       <div className="flex flex-col gap-3">
         {links?.map((c) => {
           return (
-            <div key={c?.id} className="flex gap-3">
+            <div key={c?.id} className="flex sm:gap-3">
               <span
                 className={clsx(
                   "h-full min-w-2 rounded-br-md rounded-tr-md bg-app-purple",
                   pathname === c?.path ? "bg-app-purple" : "bg-transparent",
+                  isScreenSmall ? "hidden" : "flex",
                 )}
               ></span>
 
@@ -177,11 +187,12 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
         <div className="flex flex-col gap-3">
           {lower_links?.map((c) => {
             return (
-              <div key={c?.id} className=" flex gap-3 ">
+              <div key={c?.id} className=" flex sm:gap-3 ">
                 <span
                   className={clsx(
                     "h-full min-w-2 rounded-br-md rounded-tr-md bg-app-purple",
                     pathname === c?.path ? "bg-app-purple" : "bg-transparent",
+                    isScreenSmall ? "hidden" : "flex",
                   )}
                 ></span>
 
@@ -219,8 +230,9 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
             alt="avatar"
             width={40}
             height={40}
-            className="rounded-full"
+            className={clsx("rounded-full", isScreenSmall ? "hidden" : "flex")}
           />
+
           {((!isMobileSize && isOpen) || (isMobileSize && isOpen)) && (
             <p className="test-sm flex flex-col font-bold text-[#1C1C1C]">
               John Saint
@@ -228,7 +240,12 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
             </p>
           )}
 
-          <p className="absolute -top-1 right-0 ">
+          <p
+            className={clsx(
+              "absolute -top-1  ",
+              isScreenSmall ? "right-4" : "right-0",
+            )}
+          >
             <SignoutIcon className="cursor-pointer" />
           </p>
         </div>

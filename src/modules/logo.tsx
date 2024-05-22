@@ -3,7 +3,7 @@ import clsx from "clsx";
 import React from "react";
 
 interface Props {
-  textSize?: "small" | "big";
+  textSize?: "small" | "big" | "extra-small";
 }
 
 const Logo = ({ textSize = "big" }: Props) => {
@@ -11,7 +11,9 @@ const Logo = ({ textSize = "big" }: Props) => {
     <h1
       className={clsx(
         "flex w-full max-w-[50%] font-open_sans  font-bold text-app-purple xl:max-w-[20%]",
-        textSize === "big" ? "text-[35px]" : "text-lg",
+        textSize === "big" && "text-[35px]",
+        textSize === "small" && "text-lg",
+        textSize === "extra-small" && "text-xs",
       )}
     >
       HORDE

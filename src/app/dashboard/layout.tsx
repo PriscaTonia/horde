@@ -21,7 +21,7 @@ export default function DashboardLayout({
     }
   }, [isMobileSize]);
   return (
-    <section className="flex min-h-screen w-full flex-row bg-[#f5f6fa]">
+    <section className="flex min-h-screen w-full flex-row overflow-x-hidden bg-[#f5f6fa]">
       <Sidebar
         isOpen={isSidebarOpen}
         onCloseSidebar={handleCloseSidebar}

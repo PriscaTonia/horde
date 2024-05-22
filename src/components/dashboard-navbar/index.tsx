@@ -47,10 +47,12 @@ const DashNavbar = () => {
           <div key={p?.id}>
             {p?.path === pathname && (
               <div className="flex flex-col gap-1">
-                <h3 className="font-inter text-2xl font-medium text-[#101828]">
+                <h3 className="font-inter text-lg font-medium text-[#101828] md:text-2xl">
                   {p.title}
                 </h3>
-                <p className="font-inter text-sm text-[#667085]">{p.text}</p>
+                <p className="font-inter text-xs text-[#667085] md:text-sm">
+                  {p.text}
+                </p>
               </div>
             )}
           </div>

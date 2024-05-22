@@ -15,8 +15,8 @@ const OverviewReportView = () => {
   const [selectedYear, setSelectedYear] = useState("");
 
   return (
-    <div className="flex h-[500px] w-full flex-col gap-3 rounded-2xl bg-white p-6 md:w-[60%]">
-      <div className="flex justify-between gap-6">
+    <div className="flex w-full flex-col gap-5 rounded-2xl bg-white p-6 shadow-md md:w-[60%] ">
+      <div className="flex w-full flex-col justify-between gap-3 sm:flex-row md:gap-6">
         <h4 className="font-inter text-lg font-bold text-[#1C1C1C]">Reports</h4>
 
         <SelectDropdown
@@ -32,48 +32,60 @@ const OverviewReportView = () => {
           setSelectedvalue={setSelectedYear}
         />
       </div>
-      <ResponsiveContainer>
-        <AreaChart
-          data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        >
-          <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#1c1c1c" stopOpacity={0.2} />
-              <stop offset="95%" stopColor="#1c1c1c" stopOpacity={0} />
-            </linearGradient>
-            <linearGradient id="colorPv" x="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#ffffff" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#ffffff" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <XAxis
-            dataKey="name"
-            padding={{ left: 10, right: 10 }}
-            tickMargin={10}
-            axisLine={false}
-            tickLine={false}
-          />
-          <YAxis tickMargin={10} axisLine={false} tickLine={false} />
-          {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="uv"
-            stroke="#1c1c1c"
-            fillOpacity={1}
-            fill="url(#colorUv)"
-          />
-          <Area
-            type="monotone"
-            dataKey="pv"
-            stroke="#A8C5DA"
-            fillOpacity={1}
-            fill="url(#colorPv)"
-            strokeDasharray="5 5"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+
+      <div className="w-full">
+        <div className="h-[340px] w-full ">
+          <ResponsiveContainer>
+            <AreaChart
+              data={data}
+              margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+            >
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#1c1c1c" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#1c1c1c" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id="colorPv" x="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#ffffff" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#ffffff" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <XAxis
+                dataKey="name"
+                padding={{ left: 10, right: 10 }}
+                tickMargin={5}
+                axisLine={false}
+                tickLine={false}
+              />
+              <YAxis
+                tickMargin={5}
+                ticks={[5000, 10000]}
+                tickCount={4}
+                fontSize={"12px"}
+                axisLine={false}
+                tickLine={false}
+              />
+              {/* <CartesianGrid strokeDasharray="3 3" /> */}
+              <Tooltip />
+              <Area
+                type="monotone"
+                dataKey="uv"
+                stroke="#1c1c1c"
+                fillOpacity={1}
+                fill="url(#colorUv)"
+              />
+              <Area
+                type="monotone"
+                dataKey="pv"
+                stroke="#A8C5DA"
+                fillOpacity={1}
+                fill="url(#colorPv)"
+                strokeDasharray="5 5"
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
     </div>
   );
 };

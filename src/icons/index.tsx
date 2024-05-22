@@ -21,3 +21,4 @@ export * from "./bell";
 export * from "./total-balance";
 export * from "./total-expenses";
 export * from "./total-input";
+export * from "./green-check";
