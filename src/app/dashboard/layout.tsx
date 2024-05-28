@@ -1,5 +1,6 @@
 "use client";
 import { DashNavbar, Sidebar } from "@/components";
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useMedia } from "react-use";
 
@@ -10,6 +11,7 @@ export default function DashboardLayout({
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const isMobileSize = useMedia("(max-width: 1023px)", false);
+  const isScreenSmall = useMedia("(max-width: 420px)", false);
 
   const handleCloseSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -20,17 +22,37 @@ export default function DashboardLayout({
       setIsSidebarOpen(false);
     }
   }, [isMobileSize]);
+
   return (
-    <section className="flex min-h-screen w-full flex-row overflow-x-hidden bg-[#f5f6fa]">
+    <section
+      className={clsx(
+        "relative flex h-screen w-full bg-[#f5f6fa]",
+        isSidebarOpen && "overflow-x-hidden",
+      )}
+    >
       <Sidebar
         isOpen={isSidebarOpen}
         onCloseSidebar={handleCloseSidebar}
         isMobileSize={isMobileSize}
       />
 
-      <div className="w-full">
+      <div
+        className={clsx(
+          "flex flex-col",
+          !isSidebarOpen && isScreenSmall && "w-[calc(100%-70px)] ",
+          !isSidebarOpen && !isScreenSmall && "w-[calc(100%-100px)] ",
+          isSidebarOpen && "w-[calc(100%-284px)]",
+        )}
+      >
         <DashNavbar />
-        {children}
+
+        <div
+          className={clsx(
+            "no-scrollbar h-[85vh] w-full overflow-y-auto lg:h-[90vh]",
+          )}
+        >
+          {children}
+        </div>
       </div>
     </section>
   );

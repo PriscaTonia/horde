@@ -1,4 +1,5 @@
 "use client";
+
 import { SelectDropdown } from "@/components";
 import React, { useState } from "react";
 import {
@@ -6,7 +7,6 @@ import {
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
@@ -14,8 +14,15 @@ import {
 const OverviewReportView = () => {
   const [selectedYear, setSelectedYear] = useState("");
 
+  // hiding console error about Xaxis and Yaxis defaultProps which haven't been solved on recharts yet.
+  const error = console.error;
+  console.error = (...args: any) => {
+    if (/defaultProps/.test(args[0])) return;
+    error(...args);
+  };
+
   return (
-    <div className="flex w-full flex-col gap-5 rounded-2xl bg-white p-6 shadow-md md:w-[60%] ">
+    <div className="flex w-full flex-col gap-5 rounded-2xl bg-white p-4 shadow-md md:p-6 xl:w-[60%] ">
       <div className="flex w-full flex-col justify-between gap-3 sm:flex-row md:gap-6">
         <h4 className="font-inter text-lg font-bold text-[#1C1C1C]">Reports</h4>
 
@@ -65,7 +72,6 @@ const OverviewReportView = () => {
                 axisLine={false}
                 tickLine={false}
               />
-              {/* <CartesianGrid strokeDasharray="3 3" /> */}
               <Tooltip />
               <Area
                 type="monotone"

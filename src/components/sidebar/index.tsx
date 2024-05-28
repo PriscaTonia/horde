@@ -28,7 +28,7 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
   const pathname = usePathname();
   const isScreenSmall = useMedia("(max-width: 420px)", false);
 
-  console.log(isScreenSmall);
+  // console.log(isScreenSmall);
 
   const variants = {
     open: { width: "284px" },
@@ -122,7 +122,7 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
       transition={{ duration: 0.8 }}
       variants={variants}
       className={clsx(
-        "relative  flex flex-col gap-6 border-r border-[#E0E0E0] bg-white py-6",
+        "sticky bottom-0 left-0 top-0 z-40 flex h-screen flex-col gap-6 border-r border-[#E0E0E0] bg-white py-6",
         (!isMobileSize && isOpen) || (isMobileSize && isOpen)
           ? "w-[284px]"
           : isScreenSmall
@@ -133,7 +133,7 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
       <DashHamburger
         onClick={onCloseSidebar}
         className={clsx(
-          "absolute -right-[35px]  cursor-pointer",
+          "absolute -right-[35px] z-30 cursor-pointer",
           isScreenSmall ? "top-[25px]" : "top-[15px]",
         )}
       />

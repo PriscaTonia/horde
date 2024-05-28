@@ -5,7 +5,7 @@ import React from "react";
 
 const OverviewMonthlyTotal = () => {
   return (
-    <div className="flex w-full flex-col gap-6 rounded-2xl bg-white p-6 shadow-md md:w-[40%]">
+    <div className="flex w-full flex-col gap-6 rounded-2xl bg-white p-4 shadow-md md:p-6 xl:w-[40%]">
       <div className="flex justify-between gap-6">
         <h4 className="rounded-lg border border-[#D0D5DD] px-[14px] py-2 font-inter text-sm font-semibold text-[#585A5D]">
           This month

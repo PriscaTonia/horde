@@ -12,6 +12,7 @@ const Btn = ({
   custom,
   variant = "primary",
   disabled,
+  loading,
   type,
   icon,
 }: BtnProps) => {
@@ -32,9 +33,13 @@ const Btn = ({
       disabled={disabled}
       onClick={onclick}
       className={class_name}
+      loading={loading}
       unstyled
     >
-      {icon} {label}
+      <span className="flex items-center gap-2">
+        {icon}
+        {label}
+      </span>
     </Button>
   );
 };
