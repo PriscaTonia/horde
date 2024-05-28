@@ -13,8 +13,19 @@ export interface BtnProps {
 export interface SelectProps {
   label?: string;
   placeholder?: string;
+  withCheckIcon?: boolean;
+  allowDeselect?: boolean;
   data: any[];
+  styles?: any;
   searchable?: boolean;
   selectedValue: string;
   setSelectedvalue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface CreateBudgetAmountProps {
+  selectedCurrency: string;
+  budgetAmount: number;
+  handleSetBudgetAmount: (e: any) => void;
+  currencies: { value: string; label: string }[];
+  setSelectedCurrency: React.Dispatch<React.SetStateAction<string>>;
 }

@@ -22,7 +22,7 @@ const path_titles = [
   },
   {
     id: 3,
-    path: "/dashboard/create-budget",
+    path: "/dashboard/budgets/create-budget",
     title: "Create Budget",
     text: "Customize and save your budget.",
   },

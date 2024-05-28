@@ -9,6 +9,9 @@ const SelectDropdown = ({
   selectedValue,
   setSelectedvalue,
   searchable,
+  styles,
+  withCheckIcon,
+  allowDeselect,
 }: SelectProps) => {
   return (
     <Select
@@ -19,6 +22,9 @@ const SelectDropdown = ({
       data={data}
       searchable={searchable}
       checkIconPosition="right"
+      styles={styles}
+      withCheckIcon={withCheckIcon}
+      allowDeselect={allowDeselect}
     />
   );
 };

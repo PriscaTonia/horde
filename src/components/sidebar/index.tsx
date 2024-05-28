@@ -55,12 +55,11 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
     {
       id: 2,
       title: "Budgets",
-      icon:
-        pathname === "/dashboard/budgets" ? (
-          <BudgetIcon fill="#FFFFFF" />
-        ) : (
-          <BudgetIcon />
-        ),
+      icon: pathname.includes("/dashboard/budgets") ? (
+        <BudgetIcon fill="#FFFFFF" />
+      ) : (
+        <BudgetIcon />
+      ),
       path: "/dashboard/budgets",
     },
     {
@@ -151,7 +150,9 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
               <span
                 className={clsx(
                   "h-full min-w-2 rounded-br-md rounded-tr-md bg-app-purple",
-                  pathname === c?.path ? "bg-app-purple" : "bg-transparent",
+                  pathname === c?.path || pathname.includes(c?.path)
+                    ? "bg-app-purple"
+                    : "bg-transparent",
                   isScreenSmall ? "hidden" : "flex",
                 )}
               ></span>
@@ -160,7 +161,7 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
                 href={c?.path}
                 className={clsx(
                   "ml-3 mr-6 flex w-full items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
-                  pathname === c?.path
+                  pathname === c?.path || pathname.includes(c?.path)
                     ? "bg-app-purple text-white"
                     : "bg-white",
                   isMobileSize && !isOpen && "justify-center",
@@ -191,7 +192,9 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
                 <span
                   className={clsx(
                     "h-full min-w-2 rounded-br-md rounded-tr-md bg-app-purple",
-                    pathname === c?.path ? "bg-app-purple" : "bg-transparent",
+                    pathname === c?.path || pathname.includes(c?.path)
+                      ? "bg-app-purple"
+                      : "bg-transparent",
                     isScreenSmall ? "hidden" : "flex",
                   )}
                 ></span>
@@ -200,7 +203,7 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
                   href={c?.path}
                   className={clsx(
                     "ml-3 mr-6 flex  w-full items-center gap-3 rounded-md px-3 py-2 text-base font-semibold hover:bg-app-purple hover:bg-opacity-20 ",
-                    pathname === c?.path
+                    pathname === c?.path || pathname.includes(c?.path)
                       ? "bg-app-purple text-white"
                       : "bg-white",
                     isMobileSize && !isOpen && "justify-center",

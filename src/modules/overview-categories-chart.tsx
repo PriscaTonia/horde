@@ -14,6 +14,7 @@ const OverviewCategoriesChart = () => {
     { name: "Light", value: 200 },
     { name: "Transport", value: 50 },
   ];
+
   const COLORS = ["#47566D", "#A2DBFB", "#A1E3E3", "#A2C2F1"];
 
   return (

@@ -41,7 +41,8 @@ export default function DashboardLayout({
           "flex flex-col",
           !isSidebarOpen && isScreenSmall && "w-[calc(100%-70px)] ",
           !isSidebarOpen && !isScreenSmall && "w-[calc(100%-100px)] ",
-          isSidebarOpen && "w-[calc(100%-284px)]",
+          isSidebarOpen && isMobileSize && "min-w-[300px] overflow-x-hidden",
+          isSidebarOpen && !isMobileSize && "w-[calc(100%-284px)] ",
         )}
       >
         <DashNavbar />
