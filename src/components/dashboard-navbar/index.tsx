@@ -38,6 +38,12 @@ const path_titles = [
     title: "Transactions",
     text: "Record your transactions.",
   },
+  {
+    id: 6,
+    path: "/dashboard/budgets/create-budget/success",
+    title: "Create Budget",
+    text: "Customize and save your budget.",
+  },
 ];
 
 const DashNavbar = () => {

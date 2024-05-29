@@ -19,7 +19,7 @@ const CreateBudgetAmount = ({
 
         <input
           type="number"
-          value={budgetAmount}
+          value={budgetAmount || ""}
           onChange={handleSetBudgetAmount}
           placeholder="1,000.00"
           className="w-full border-none bg-white outline-none placeholder:opacity-25 focus:ring-0"

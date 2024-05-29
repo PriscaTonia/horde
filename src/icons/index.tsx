@@ -31,3 +31,7 @@ export * from "./bin";
 export * from "./save";
 export * from "./arrow-right";
 export * from "./arrow-down";
+export * from "./budget-success";
+export * from "./budget-stars";
+export * from "./long-arrow-right";
+export * from "./food";

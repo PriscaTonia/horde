@@ -9,12 +9,12 @@ const ArrowRight = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_665_27360)">
+      <g clipPath="url(#clip0_665_27360)">
         <path
           d="M6 4.5L10 8.5L6 12.5"
           stroke="#667085"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>

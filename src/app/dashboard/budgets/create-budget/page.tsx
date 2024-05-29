@@ -1,5 +1,6 @@
 "use client";
 
+import { Btn } from "@/components";
 import {
   CreateBudgetAddCategory,
   CreateBudgetAmount,
@@ -7,10 +8,12 @@ import {
 } from "@/modules";
 import CreateBudgetTable from "@/modules/create-budget-table";
 import { useNotify } from "@/utils/hooks/useNotify";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const CreateBudget = () => {
   const notify = useNotify();
+  const { push } = useRouter();
   const [selectedCurrency, setSelectedCurrency] = useState("$");
   const [budgetAmount, setBudgetAmount] = useState<null | number>(null);
   const [categories, setCategories] = useState<any[]>([]);
@@ -46,7 +49,7 @@ const CreateBudget = () => {
     <div className="px-5 py-8 font-inter md:px-9">
       <CreateBudgetBreadcrumbs />
 
-      <div className="flex flex-col gap-9">
+      <div className="mb-5 flex flex-col gap-9">
         <CreateBudgetAmount
           handleSetBudgetAmount={handleSetBudgetAmount}
           budgetAmount={budgetAmount as number}
@@ -64,6 +67,15 @@ const CreateBudget = () => {
             setCategories={setCategories}
           />
         )}
+      </div>
+
+      <div className="absolute bottom-3 w-full bg-[#f5f6fa] py-3">
+        <Btn
+          label={"Save"}
+          onclick={() => {
+            push("/dashboard/budgets/create-budget/success");
+          }}
+        />
       </div>
     </div>
   );

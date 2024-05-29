@@ -223,7 +223,7 @@ const CreateBudgetTable = ({ data, currency, setCategories }: TableProps) => {
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id} className="border-b border-[#EAECF0] bg-white">
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="w-[30%] px-6 py-[10px]">
+                <td key={cell.id} className="lg:w-[30%] px-6 py-[10px]">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
