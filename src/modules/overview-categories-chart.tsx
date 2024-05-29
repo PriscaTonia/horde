@@ -30,6 +30,11 @@ const OverviewCategoriesChart = () => {
             { value: "3 months", label: "3 months" },
             { value: "1 year", label: "1 year" },
           ]}
+          styles={{
+            input: {
+              cursor: "pointer",
+            },
+          }}
           placeholder="Select Period"
           searchable={true}
           selectedValue={selectedValue}

@@ -35,6 +35,11 @@ const OverviewReportView = () => {
           ]}
           placeholder="Select Year"
           searchable={true}
+          styles={{
+            input: {
+              cursor: "pointer",
+            },
+          }}
           selectedValue={selectedYear}
           setSelectedvalue={setSelectedYear}
         />

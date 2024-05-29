@@ -28,4 +28,6 @@ export * from "./home";
 export * from "./edit";
 export * from "./pencil";
 export * from "./bin";
+export * from "./save";
 export * from "./arrow-right";
+export * from "./arrow-down";

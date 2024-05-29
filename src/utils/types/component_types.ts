@@ -17,6 +17,7 @@ export interface SelectProps {
   allowDeselect?: boolean;
   data: any[];
   styles?: any;
+  classNames?: any;
   searchable?: boolean;
   selectedValue: string;
   setSelectedvalue: React.Dispatch<React.SetStateAction<string>>;
@@ -28,4 +29,8 @@ export interface CreateBudgetAmountProps {
   handleSetBudgetAmount: (e: any) => void;
   currencies: { value: string; label: string }[];
   setSelectedCurrency: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface CreateBudgetAddCategoryProps {
+  handleAdd: (item: any) => void;
 }
