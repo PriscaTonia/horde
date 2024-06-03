@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { Bell } from "@/icons";
 import Image from "next/image";
 import clsx from "clsx";
@@ -28,7 +28,7 @@ const path_titles = [
   },
   {
     id: 4,
-    path: "/dashboard/view-budget",
+    path: "/dashboard/budgets/view-budget",
     title: "Budgets",
     text: "View your budgets.",
   },
@@ -48,10 +48,16 @@ const path_titles = [
 
 const DashNavbar = () => {
   const pathname = usePathname();
+  const params = useSearchParams();
+  const name = params.get("name");
 
   const activePath = useMemo(() => {
+    if (pathname.includes("/dashboard/budgets/view-budget")) {
+      return { title: name, text: "View your budget" };
+    }
+
     return path_titles.find((p) => p?.path === pathname) || path_titles[0];
-  }, [pathname]);
+  }, [pathname, name]);
 
   return (
     <div

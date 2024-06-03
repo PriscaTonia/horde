@@ -194,12 +194,7 @@ const CreateBudgetTable = ({ data, currency, setCategories }: TableProps) => {
 
   return (
     <div className="w-full">
-      <table
-        className={clsx(
-          "w-full rounded-lg border border-neutral-100 text-left",
-          styles.table,
-        )}
-      >
+      <table className={clsx("w-full rounded-lg text-left", styles.table)}>
         <thead className="bg-white capitalize text-zinc-700 ">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
@@ -223,7 +218,7 @@ const CreateBudgetTable = ({ data, currency, setCategories }: TableProps) => {
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id} className="border-b border-[#EAECF0] bg-white">
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="lg:w-[30%] px-6 py-[10px]">
+                <td key={cell.id} className="px-6 py-[10px] lg:w-[30%]">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

@@ -21,7 +21,7 @@
   .table td {
     border-bottom: 1px solid #ddd;
     display: block;
-    font-size: 1em;
+    font-size: 12px;
     text-align: right;
   }
 
@@ -61,7 +61,7 @@
   .parent td {
     border-bottom: 1px solid #ddd;
     display: block;
-    font-size: 1em;
+    font-size: 12px;
     text-align: right;
   }
 

@@ -3,10 +3,10 @@ import React from "react";
 
 const CurrentBudget = () => {
   return (
-    <div className="flex w-full flex-col gap-5 rounded-2xl bg-white p-6 lg:w-[50%]">
+    <div className="flex w-full flex-col gap-6 rounded-2xl bg-white p-6 shadow-md lg:w-[50%]">
       <h3 className="flex flex-col gap-2 text-sm text-[#2C2C2C]">
         Current Budget
-        <span className="bg-app-black-200 flex items-center justify-between rounded-lg px-5 py-2 text-xl text-white">
+        <span className="flex items-center justify-between rounded-lg bg-app-black-200 px-5 py-2 text-xl text-white">
           March 2024
           <span className="cursor-pointer rounded bg-app-purple p-2">
             <LongArrowRight />

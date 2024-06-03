@@ -34,3 +34,8 @@ export interface CreateBudgetAmountProps {
 export interface CreateBudgetAddCategoryProps {
   handleAdd: (item: any) => void;
 }
+
+export interface CurrentBudgetCategoryProps {
+  selectedValue: string;
+  setSelectedValue: React.Dispatch<React.SetStateAction<string>>;
+}

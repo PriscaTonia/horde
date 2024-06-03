@@ -28,8 +28,6 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
   const pathname = usePathname();
   const isScreenSmall = useMedia("(max-width: 420px)", false);
 
-  // console.log(isScreenSmall);
-
   const variants = {
     open: { width: "284px" },
     closed: { width: isScreenSmall ? "70px" : "100px" },
