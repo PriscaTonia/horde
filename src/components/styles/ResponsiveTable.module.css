@@ -7,13 +7,15 @@
     overflow: hidden;
     padding: 0;
     position: absolute;
+    bottom: 0;
     width: 1px;
   }
 
   .table tr {
     display: block;
-    margin-bottom: 0.625em;
+    margin-bottom: 1.25em;
   }
+
   .table tr:last-of-type {
     border: none;
   }
@@ -55,7 +57,11 @@
 
   .parent tr {
     display: block;
-    margin-bottom: 0.625em;
+    margin-bottom: 1.25em;
+  }
+
+  .parent tr:last-child {
+    border-bottom: 0;
   }
 
   .parent td {

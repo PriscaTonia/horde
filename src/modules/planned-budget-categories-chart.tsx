@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-const BudgetCategoriesChart = () => {
+const PlannedBudgetCategoriesChart = () => {
   const data = [
     { name: "Food", value: 800 },
     { name: "Rent", value: 400 },
@@ -29,7 +29,7 @@ const BudgetCategoriesChart = () => {
                 fill="#8884d8"
                 paddingAngle={3}
                 dataKey="value"
-                label
+                // label
               >
                 {data.map((entry, index) => (
                   <Cell
@@ -68,4 +68,4 @@ const BudgetCategoriesChart = () => {
   );
 };
 
-export { BudgetCategoriesChart };
+export { PlannedBudgetCategoriesChart };

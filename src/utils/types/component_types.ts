@@ -39,3 +39,11 @@ export interface CurrentBudgetCategoryProps {
   selectedValue: string;
   setSelectedValue: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export interface NoTransactionsProps {
+  setShowTransactionsModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface TransactionsModalProps {
+  onClose: () => void;
+}
