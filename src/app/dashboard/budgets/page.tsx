@@ -1,7 +1,11 @@
 "use client";
 
-import { CurrentBudget, CurrentBudgetCategory, NoBudgets } from "@/modules";
-import PreviousBudgetsTable from "@/modules/previous-budgets-table";
+import {
+  CurrentBudget,
+  CurrentBudgetCategory,
+  NoBudgets,
+  PreviousBudgetsTable,
+} from "@/modules";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 

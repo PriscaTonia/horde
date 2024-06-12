@@ -5,8 +5,8 @@ import {
   CreateBudgetAddCategory,
   CreateBudgetAmount,
   CreateBudgetBreadcrumbs,
+  CreateBudgetTable,
 } from "@/modules";
-import CreateBudgetTable from "@/modules/create-budget-table";
 import { useNotify } from "@/utils/hooks/useNotify";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
