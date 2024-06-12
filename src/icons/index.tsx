@@ -35,3 +35,4 @@ export * from "./budget-success";
 export * from "./budget-stars";
 export * from "./long-arrow-right";
 export * from "./food";
+export * from "./calendar";

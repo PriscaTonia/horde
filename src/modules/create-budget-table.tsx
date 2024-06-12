@@ -230,4 +230,4 @@ const CreateBudgetTable = ({ data, currency, setCategories }: TableProps) => {
   );
 };
 
-export default CreateBudgetTable;
+export { CreateBudgetTable };

@@ -3,8 +3,9 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { HeadlessMantineProvider, MantineProvider } from "@mantine/core";
+import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
 
 export const Provider = ({ children }: { children: React.ReactNode }) => {
   const [queryClient] = useState(() => new QueryClient());

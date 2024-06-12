@@ -163,4 +163,4 @@ const PreviousBudgetsTable = ({ data }: TableProps) => {
   );
 };
 
-export default PreviousBudgetsTable;
+export { PreviousBudgetsTable };
