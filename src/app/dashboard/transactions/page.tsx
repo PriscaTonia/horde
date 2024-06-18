@@ -45,7 +45,7 @@ const TransactionsPage = () => {
       {/* for when there are transactions */}
       {transactions?.length > 0 && (
         <section className="flex flex-col rounded-lg shadow-md">
-          <div className="flex items-center justify-between rounded-lg bg-white px-6 py-5">
+          <div className="flex flex-col items-center gap-3 rounded-lg bg-white px-6 py-5 md:flex-row md:justify-between">
             <div className="flex w-full items-center gap-5 md:max-w-[50%] lg:max-w-[45%]">
               <TextInput
                 value={searchValue}
@@ -72,7 +72,7 @@ const TransactionsPage = () => {
                 icon={<PlusIcon />}
                 label="Add "
                 onclick={() => setShowTransactionsModal(true)}
-                custom="py-2 px-8 rounded-lg"
+                custom="py-2 px-4 md:px-8 rounded-lg"
               />
             </div>
 
@@ -81,7 +81,7 @@ const TransactionsPage = () => {
               label="Filter "
               variant="secondary"
               onclick={() => setShowTransactionsModal(true)}
-              custom="py-2 px-8 rounded-lg border border-[#D0D5DD] shadow-xs text-[#344054]"
+              custom="py-2 px-4 md:px-8 rounded-lg border border-[#D0D5DD] shadow-xs text-[#344054]"
             />
           </div>
 

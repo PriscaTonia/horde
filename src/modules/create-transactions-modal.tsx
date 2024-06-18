@@ -17,16 +17,16 @@ const CreateTransactionsModal = ({
   const [selectedBudget, setSelectedBudget] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState<number | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   useEffect(() => {
     if (item) {
       setAmount(item?.amount);
       setDescription(item?.description);
-      setSelectedBudget(item.budget);
-      setSelectedCategory(item.category);
-      setSelectedDate(new Date(item.date));
+      setSelectedBudget(item?.budget);
+      setSelectedCategory(item?.category.toLowerCase());
+      setSelectedDate(new Date(item?.date) || new Date());
     }
   }, [item]);
 
@@ -46,7 +46,7 @@ const CreateTransactionsModal = ({
       return false;
     }
 
-    if (body.amount === 0) {
+    if (!body.amount || body.amount === 0) {
       notify("Please add an amount");
       return false;
     }
@@ -177,7 +177,7 @@ const CreateTransactionsModal = ({
                 type="number"
                 className="rounded-lg border border-[#D0D5DD] px-[14px] py-2 text-sm font-normal text-[#101828] outline-none focus:ring-0"
                 id="amount"
-                value={amount}
+                value={amount as number}
                 onChange={(e) => setAmount(+e.target.value)}
               />
             </label>
