@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import {
   createColumnHelper,
   flexRender,
@@ -9,7 +9,7 @@ import {
 } from "@tanstack/react-table";
 import clsx from "clsx";
 import styles from "../components/styles/ResponsiveTable.module.css";
-import { Bin, Pencil, Save } from "@/icons";
+import { Bin, Pencil } from "@/icons";
 import { CreateTransactionsModal } from "./create-transactions-modal";
 
 interface TableProps {
