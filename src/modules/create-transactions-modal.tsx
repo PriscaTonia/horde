@@ -2,14 +2,93 @@
 
 import { Btn, SelectDropdown } from "@/components";
 import { Calendar, CloseIcon } from "@/icons";
+import { useNotify } from "@/utils/hooks/useNotify";
 import { TransactionsModalProps } from "@/utils/types/component_types";
-import { DateInput, DatePickerInput } from "@mantine/dates";
-import React, { useState } from "react";
+import { DateInput } from "@mantine/dates";
+import React, { useEffect, useState } from "react";
 
-const CreateTransactionsModal = ({ onClose }: TransactionsModalProps) => {
+const CreateTransactionsModal = ({
+  onClose,
+  setTransactions,
+  item,
+}: TransactionsModalProps) => {
+  const notify = useNotify();
+
   const [selectedBudget, setSelectedBudget] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState(0);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+  useEffect(() => {
+    if (item) {
+      setAmount(item?.amount);
+      setDescription(item?.description);
+      setSelectedBudget(item.budget);
+      setSelectedCategory(item.category);
+      setSelectedDate(new Date(item.date));
+    }
+  }, [item]);
+
+  const validate = (body: any) => {
+    if (body.budget === "") {
+      notify("Please select a budget");
+      return false;
+    }
+
+    if (body.category === "") {
+      notify("Please select a category");
+      return false;
+    }
+
+    if (body.description === "") {
+      notify("Please add a description");
+      return false;
+    }
+
+    if (body.amount === 0) {
+      notify("Please add an amount");
+      return false;
+    }
+
+    if (!body.date) {
+      notify("Please select a date");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const body = {
+      id: Math.floor(Math.random() * 100),
+      budget: selectedBudget,
+      category: selectedCategory,
+      amount: amount,
+      description: description,
+      date: selectedDate?.toISOString(),
+    };
+
+    const isValidBody = validate(body);
+
+    if (isValidBody) {
+      if (item) {
+        setTransactions((c) => {
+          let newT = c.filter((t) => t.id !== item?.id);
+
+          return [...newT, body];
+        });
+      } else {
+        setTransactions((c) => {
+          return [...c, body];
+        });
+      }
+
+      onClose();
+    }
+  };
 
   return (
     <div className="modal_wrapper">
@@ -17,7 +96,7 @@ const CreateTransactionsModal = ({ onClose }: TransactionsModalProps) => {
         {/* header */}
         <div className="flex w-full items-center justify-between">
           <h3 className="flex flex-col gap-1 text-lg font-semibold text-[#101828]">
-            Add Transaction
+            {item ? "Update Transaction" : " Add Transaction"}
             <span className="text-sm font-normal text-[#667085]">
               Record and save your transaction
             </span>
@@ -32,7 +111,10 @@ const CreateTransactionsModal = ({ onClose }: TransactionsModalProps) => {
         </div>
 
         {/* form */}
-        <section className="flex w-full flex-col gap-5">
+        <form
+          onSubmit={(e) => handleSubmit(e)}
+          className="flex w-full flex-col gap-5"
+        >
           <div className="flex w-full flex-col gap-4 md:flex-row">
             <SelectDropdown
               data={demo_budgets}
@@ -76,6 +158,8 @@ const CreateTransactionsModal = ({ onClose }: TransactionsModalProps) => {
               className="min-h-[78px] rounded-lg border border-[#D0D5DD] px-[14px] py-[10px] text-sm font-normal text-[#667085] outline-none focus:ring-0"
               placeholder="Enter a description..."
               id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             ></textarea>
             <span className="text-sm font-normal text-[#667085]">
               This is a hint text to help user.
@@ -93,6 +177,8 @@ const CreateTransactionsModal = ({ onClose }: TransactionsModalProps) => {
                 type="number"
                 className="rounded-lg border border-[#D0D5DD] px-[14px] py-2 text-sm font-normal text-[#101828] outline-none focus:ring-0"
                 id="amount"
+                value={amount}
+                onChange={(e) => setAmount(+e.target.value)}
               />
             </label>
             <label
@@ -117,9 +203,9 @@ const CreateTransactionsModal = ({ onClose }: TransactionsModalProps) => {
               />
             </label>
 
-            <Btn label="Save" custom="" />
+            <Btn label={item ? "Update" : "Save"} type="submit" />
           </div>
-        </section>
+        </form>
       </section>
     </div>
   );

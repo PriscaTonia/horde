@@ -46,4 +46,6 @@ export interface NoTransactionsProps {
 
 export interface TransactionsModalProps {
   onClose: () => void;
+  setTransactions: React.Dispatch<React.SetStateAction<any[]>>;
+  item?: any;
 }

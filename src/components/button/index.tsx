@@ -23,7 +23,7 @@ const Btn = ({
     disabled && "bg-app-gray cursor-not-allowed bg-opacity-50 border-none",
     variant === "primary"
       ? "bg-app-purple text-white border-app-purple"
-      : "bg-white text-app-gray border-app-gray",
+      : "bg-white text-[#344054] border-app-gray",
     custom,
   );
 

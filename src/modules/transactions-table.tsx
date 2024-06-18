@@ -10,15 +10,18 @@ import {
 import clsx from "clsx";
 import styles from "../components/styles/ResponsiveTable.module.css";
 import { Bin, Pencil, Save } from "@/icons";
+import { CreateTransactionsModal } from "./create-transactions-modal";
 
 interface TableProps {
   data: any[];
+  setTransactions: any;
 }
 
 const columnHelper = createColumnHelper<any>();
 
-const TransactionsTable = ({ data }: TableProps) => {
+const TransactionsTable = ({ data, setTransactions }: TableProps) => {
   const [selectedItem, setSelectedItem] = useState<null | any>(null);
+  const [showTransactionsModal, setShowTransactionsModal] = useState(false);
 
   const columns = useMemo(
     () => [
@@ -81,7 +84,9 @@ const TransactionsTable = ({ data }: TableProps) => {
                 Date
               </span>
 
-              <span className="w-full">{item.date}</span>
+              <span className="w-full">
+                {new Date(item.date).toDateString()}
+              </span>
             </p>
           );
         },
@@ -100,7 +105,8 @@ const TransactionsTable = ({ data }: TableProps) => {
               <div className="flex w-full items-center justify-end">
                 <div
                   onClick={() => {
-                    console.log("hello");
+                    setSelectedItem(item);
+                    setShowTransactionsModal(true);
                   }}
                   className="cursor-pointer rounded-bl-md rounded-tl-md border border-[#D5D5D5] bg-[#FAFBFD] px-4 py-2"
                 >
@@ -131,46 +137,57 @@ const TransactionsTable = ({ data }: TableProps) => {
   });
 
   return (
-    <div className="w-full">
-      <table className={clsx("w-full rounded-lg text-left", styles.table)}>
-        <thead className="bg-white capitalize text-zinc-700 ">
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr
-              key={headerGroup.id}
-              className="w-full border-b border-[#EAECF0]"
-            >
-              {headerGroup.headers.map((header) => (
-                <th
-                  key={header.id}
-                  className="px-6 py-[10px] text-xs text-[#667085]"
-                >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} className="border-b border-[#EAECF0] bg-white">
-              {row.getVisibleCells().map((cell) => (
-                <td
-                  key={cell.id}
-                  className="px-6 py-[10px] text-sm text-[#101828] lg:w-[20%]"
-                >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      {/* update transaction modal */}
+      {showTransactionsModal && (
+        <CreateTransactionsModal
+          onClose={() => setShowTransactionsModal(false)}
+          setTransactions={setTransactions}
+          item={selectedItem}
+        />
+      )}
+
+      <div className="w-full">
+        <table className={clsx("w-full rounded-lg text-left", styles.table)}>
+          <thead className="bg-white capitalize text-zinc-700 ">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr
+                key={headerGroup.id}
+                className="w-full border-b border-[#EAECF0]"
+              >
+                {headerGroup.headers.map((header) => (
+                  <th
+                    key={header.id}
+                    className="px-6 py-[10px] text-xs text-[#667085]"
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <tr key={row.id} className="border-b border-[#EAECF0] bg-white">
+                {row.getVisibleCells().map((cell) => (
+                  <td
+                    key={cell.id}
+                    className="px-6 py-[10px] text-sm text-[#101828] lg:w-[20%]"
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

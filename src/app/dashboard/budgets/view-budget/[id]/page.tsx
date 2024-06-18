@@ -15,6 +15,7 @@ const ViewBudget = () => {
   const { id } = useParams();
   const [selectedValue1, setSelectedValue1] = useState("%");
   const [selectedValue2, setSelectedValue2] = useState("%");
+  const [transactions, setTransactions] = useState<any[]>(all_transactions);
 
   // console.log(id);
 
@@ -46,8 +47,11 @@ const ViewBudget = () => {
           />
         </div>
 
-        {all_transactions?.length > 0 && (
-          <TransactionsTable data={all_transactions} />
+        {transactions?.length > 0 && (
+          <TransactionsTable
+            setTransactions={setTransactions}
+            data={transactions}
+          />
         )}
       </section>
     </div>

@@ -43,7 +43,7 @@ const CreateBudget = () => {
     });
   };
 
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <div className="px-5 py-8 font-inter md:px-9">
