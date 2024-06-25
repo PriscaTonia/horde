@@ -1,9 +1,14 @@
+"use client";
+
 import { Btn } from "@/components";
 import { GreenCheck } from "@/icons";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const OverviewMonthlyTotal = () => {
+  const { push } = useRouter();
+
   return (
     <div className="flex w-full flex-col gap-6 rounded-2xl bg-white p-4 shadow-md md:p-6 xl:w-[40%]">
       <div className="flex justify-between gap-6">
@@ -11,7 +16,11 @@ const OverviewMonthlyTotal = () => {
           This month
         </h4>
 
-        <Btn label="View" custom="border px-[14px] py-2 rounded-lg" />
+        <Btn
+          label="View"
+          custom="border px-[14px] py-2 rounded-lg"
+          onclick={() => push("/dashboard/budgets")}
+        />
       </div>
 
       <div className="flex flex-col gap-7">
@@ -27,7 +36,7 @@ const OverviewMonthlyTotal = () => {
           <span className={clsx(spanStyles, "text-app-purple")}>$10,000</span>
         </h6>
 
-        <h6 className="text-app-green flex w-full items-center justify-end gap-[6px] text-base font-bold">
+        <h6 className="flex w-full items-center justify-end gap-[6px] text-base font-bold text-app-green">
           <GreenCheck /> On track
         </h6>
       </div>

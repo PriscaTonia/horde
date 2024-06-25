@@ -105,7 +105,7 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
         ) : (
           <SettingsIcon />
         ),
-      path: "/dashboard/setting",
+      path: "/dashboard/settings",
     },
   ];
 

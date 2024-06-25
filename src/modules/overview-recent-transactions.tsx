@@ -1,8 +1,12 @@
+"use client";
 import { Btn } from "@/components";
 import { PlusIcon } from "@/icons";
-import React from "react";
+import React, { useState } from "react";
+import { CreateTransactionsModal } from "./create-transactions-modal";
 
 const OverviewRecentTransactions = () => {
+  const [transactions, setTransactions] = useState<any[]>([]);
+  const [showTransactionsModal, setShowTransactionsModal] = useState(false);
   return (
     <div className="flex w-full flex-col gap-6 rounded-2xl bg-white p-4 shadow-md md:p-6 xl:w-[60%]">
       <div className="flex items-center justify-between gap-6">
@@ -14,6 +18,7 @@ const OverviewRecentTransactions = () => {
           label={"Add"}
           icon={<PlusIcon />}
           custom="border px-[14px] py-2 rounded-lg w-fit"
+          onclick={() => setShowTransactionsModal(true)}
         />
       </div>
 
@@ -32,6 +37,14 @@ const OverviewRecentTransactions = () => {
           );
         })}
       </div>
+
+      {/* create transaction modal */}
+      {showTransactionsModal && (
+        <CreateTransactionsModal
+          onClose={() => setShowTransactionsModal(false)}
+          setTransactions={setTransactions}
+        />
+      )}
     </div>
   );
 };

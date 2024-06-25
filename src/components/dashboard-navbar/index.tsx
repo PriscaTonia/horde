@@ -1,11 +1,19 @@
 "use client";
 
-import React, { useMemo } from "react";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
-import { Bell } from "@/icons";
+import React, { useMemo, useRef, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import {
+  Bell,
+  CalendarColored,
+  ImportantColored,
+  Profile,
+  SettingsColored,
+} from "@/icons";
 import Image from "next/image";
 import clsx from "clsx";
-import { useMedia } from "react-use";
+import { useClickAway } from "react-use";
+import { demo_notifications } from "@/app/dashboard/notifications/page";
+// import { useMedia } from "react-use";
 
 const path_titles = [
   {
@@ -44,12 +52,37 @@ const path_titles = [
     title: "Create Budget",
     text: "Customize and save your budget.",
   },
+  {
+    id: 7,
+    path: "/dashboard/notifications",
+    title: "Notifications",
+    text: "Alerts and notifications.",
+  },
+  {
+    id: 8,
+    path: "/dashboard/support",
+    title: "Support",
+    text: "FAQs & 24/7 support.",
+  },
+  {
+    id: 9,
+    path: "/dashboard/settings",
+    title: "Settings",
+    text: "Modify your settings.",
+  },
 ];
 
 const DashNavbar = () => {
+  const ref = useRef(null);
   const pathname = usePathname();
   const params = useSearchParams();
   const name = params.get("name");
+
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  useClickAway(ref, () => {
+    setShowNotifications(false);
+  });
 
   const activePath = useMemo(() => {
     if (pathname.includes("/dashboard/budgets/view-budget")) {
@@ -75,9 +108,55 @@ const DashNavbar = () => {
       </div>
 
       <div className="hidden gap-5 md:flex">
-        <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#EFEFEFCC]">
+        <div
+          onClick={() => setShowNotifications(!showNotifications)}
+          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#EFEFEFCC]"
+        >
           <Bell />
         </div>
+
+        {/* show filter calendar */}
+        {showNotifications && (
+          <div
+            ref={ref}
+            className="absolute right-6 top-20 flex flex-col rounded-lg border border-[#F2F4F7] bg-white py-[14px] shadow-lg drop-shadow lg:w-[284px]"
+          >
+            <h5 className="border-b border-[#EAECF0] pb-[14px] text-[15px] font-semibold text-[#404040] ">
+              <span className="px-5">Notifications</span>
+            </h5>
+
+            {demo_notifications?.map((n) => {
+              return (
+                <div
+                  key={n.id}
+                  className="relative flex items-center gap-3 px-5 py-3"
+                >
+                  <span>
+                    {" "}
+                    {n.type === "profile" ? (
+                      <Profile />
+                    ) : n.type === "settings" ? (
+                      <SettingsColored />
+                    ) : n.type === "reminder" ? (
+                      <CalendarColored />
+                    ) : (
+                      <ImportantColored />
+                    )}
+                  </span>
+
+                  <p className="flex flex-col text-sm font-medium text-[#202224]">
+                    <span className="line-clamp-1">{n.text}</span>
+                    <span className="text-xs text-[#B5B5B5]">{n.date}</span>
+                  </p>
+                </div>
+              );
+            })}
+
+            <p className="w-full cursor-pointer border-t border-[#EAECF0] px-5 py-3 text-center text-[13px] font-medium text-[#585A5D]">
+              See all notifications
+            </p>
+          </div>
+        )}
 
         <Image
           src="/sidebar/Avatar.png"
