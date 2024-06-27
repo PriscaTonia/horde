@@ -11,9 +11,43 @@ import { useNotify } from "@/utils/hooks/useNotify";
 import { TextInput } from "@mantine/core";
 import React, { useState } from "react";
 
+interface Notification {
+  id: number;
+  text: string;
+  date: string;
+  notification_type: "profile" | "settings" | "reminder" | "important";
+}
+
 const Notifications = () => {
   const [searchValue, setSearchValue] = useState("");
   const notify = useNotify();
+
+  const demo_notifications: Notification[] = [
+    {
+      id: 1,
+      text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
+      date: "Mar 12",
+      notification_type: "profile",
+    },
+    {
+      id: 2,
+      text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
+      date: "Mar 15",
+      notification_type: "settings",
+    },
+    {
+      id: 3,
+      text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
+      date: "Mar 17",
+      notification_type: "reminder",
+    },
+    {
+      id: 4,
+      text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
+      date: "Mar 19",
+      notification_type: "important",
+    },
+  ];
 
   return (
     <div className="px-5 py-8 font-inter md:px-9">
@@ -46,18 +80,18 @@ const Notifications = () => {
           <h4 className="py-5 font-inter text-base font-bold text-[#1C1C1C] md:text-lg">
             Most recent
           </h4>
-          {demo_notifications?.map((n) => {
+          {demo_notifications.map((n) => {
             return (
               <div
                 key={n.id}
                 className="relative flex flex-col items-center gap-3 border-b border-[#EAECF0] py-5 sm:flex-row "
               >
                 <span>
-                  {n.type === "profile" ? (
+                  {n.notification_type === "profile" ? (
                     <Profile />
-                  ) : n.type === "settings" ? (
+                  ) : n.notification_type === "settings" ? (
                     <SettingsColored />
-                  ) : n.type === "reminder" ? (
+                  ) : n.notification_type === "reminder" ? (
                     <CalendarColored />
                   ) : (
                     <ImportantColored />
@@ -83,18 +117,18 @@ const Notifications = () => {
           <h4 className="py-5 font-inter text-base font-bold text-[#1C1C1C] md:text-lg">
             Earlier
           </h4>
-          {demo_notifications?.map((n) => {
+          {demo_notifications.map((n) => {
             return (
               <div
                 key={n.id}
                 className="relative flex flex-col items-center gap-3 border-b border-[#EAECF0] py-5 sm:flex-row "
               >
                 <span>
-                  {n.type === "profile" ? (
+                  {n.notification_type === "profile" ? (
                     <Profile />
-                  ) : n.type === "settings" ? (
+                  ) : n.notification_type === "settings" ? (
                     <SettingsColored />
-                  ) : n.type === "reminder" ? (
+                  ) : n.notification_type === "reminder" ? (
                     <CalendarColored />
                   ) : (
                     <ImportantColored />
@@ -120,30 +154,3 @@ const Notifications = () => {
 };
 
 export default Notifications;
-
-export const demo_notifications = [
-  {
-    id: 1,
-    text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
-    date: "Mar 12",
-    type: "profile",
-  },
-  {
-    id: 2,
-    text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
-    date: "Mar 15",
-    type: "settings",
-  },
-  {
-    id: 3,
-    text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
-    date: "Mar 17",
-    type: "reminder",
-  },
-  {
-    id: 4,
-    text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
-    date: "Mar 19",
-    type: "important",
-  },
-];

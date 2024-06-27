@@ -12,9 +12,15 @@ import {
 import Image from "next/image";
 import clsx from "clsx";
 import { useClickAway } from "react-use";
-import { demo_notifications } from "@/app/dashboard/notifications/page";
 import { ApplicationRoutes } from "@/utils/routes";
 // import { useMedia } from "react-use";
+
+interface Notification {
+  id: number;
+  text: string;
+  date: string;
+  notification_type: "profile" | "settings" | "reminder" | "important";
+}
 
 const path_titles = [
   {
@@ -93,6 +99,33 @@ const DashNavbar = () => {
     return path_titles.find((p) => p?.path === pathname) || path_titles[0];
   }, [pathname, name]);
 
+  const demo_notifications: Notification[] = [
+    {
+      id: 1,
+      text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
+      date: "Mar 12",
+      notification_type: "profile",
+    },
+    {
+      id: 2,
+      text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
+      date: "Mar 15",
+      notification_type: "settings",
+    },
+    {
+      id: 3,
+      text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
+      date: "Mar 17",
+      notification_type: "reminder",
+    },
+    {
+      id: 4,
+      text: "Lorem dolor sit amet consectetur. Lectus varius nisi euismod dolor tincidunt volutpat dignissim.",
+      date: "Mar 19",
+      notification_type: "important",
+    },
+  ];
+
   return (
     <div
       className={clsx(
@@ -126,7 +159,7 @@ const DashNavbar = () => {
               <span className="px-5">Notifications</span>
             </h5>
 
-            {demo_notifications?.map((n) => {
+            {demo_notifications.map((n) => {
               return (
                 <div
                   key={n.id}
@@ -134,11 +167,11 @@ const DashNavbar = () => {
                 >
                   <span>
                     {" "}
-                    {n.type === "profile" ? (
+                    {n.notification_type === "profile" ? (
                       <Profile />
-                    ) : n.type === "settings" ? (
+                    ) : n.notification_type === "settings" ? (
                       <SettingsColored />
-                    ) : n.type === "reminder" ? (
+                    ) : n.notification_type === "reminder" ? (
                       <CalendarColored />
                     ) : (
                       <ImportantColored />
