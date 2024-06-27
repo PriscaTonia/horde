@@ -13,24 +13,25 @@ import Image from "next/image";
 import clsx from "clsx";
 import { useClickAway } from "react-use";
 import { demo_notifications } from "@/app/dashboard/notifications/page";
+import { ApplicationRoutes } from "@/utils/routes";
 // import { useMedia } from "react-use";
 
 const path_titles = [
   {
     id: 1,
-    path: "/dashboard/overview",
+    path: ApplicationRoutes.OVERVIEW,
     title: "Welcome back, John.",
     text: "Track and manage your expenses today!",
   },
   {
     id: 2,
-    path: "/dashboard/budgets",
+    path: ApplicationRoutes.BUDGETS,
     title: "Budgets",
     text: "Customize and save your budget.",
   },
   {
     id: 3,
-    path: "/dashboard/budgets/create-budget",
+    path: ApplicationRoutes.CREATE_BUDGET,
     title: "Create Budget",
     text: "Customize and save your budget.",
   },
@@ -42,31 +43,31 @@ const path_titles = [
   },
   {
     id: 5,
-    path: "/dashboard/transactions",
+    path: ApplicationRoutes.TRANSACTIONS,
     title: "Transactions",
     text: "Record your transactions.",
   },
   {
     id: 6,
-    path: "/dashboard/budgets/create-budget/success",
+    path: ApplicationRoutes.CREATE_BUDGET_SUCCESS,
     title: "Create Budget",
     text: "Customize and save your budget.",
   },
   {
     id: 7,
-    path: "/dashboard/notifications",
+    path: ApplicationRoutes.NOTIFICATIONS,
     title: "Notifications",
     text: "Alerts and notifications.",
   },
   {
     id: 8,
-    path: "/dashboard/support",
+    path: ApplicationRoutes.SUPPORT,
     title: "Support",
     text: "FAQs & 24/7 support.",
   },
   {
     id: 9,
-    path: "/dashboard/settings",
+    path: ApplicationRoutes.SETTINGS,
     title: "Settings",
     text: "Modify your settings.",
   },

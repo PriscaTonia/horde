@@ -15,15 +15,15 @@ const BudgetSuccess = () => {
         r="69.69"
         fill="url(#paint0_linear_681_5665)"
         stroke="url(#paint1_linear_681_5665)"
-        stroke-width="4.62"
+        strokeWidth="4.62"
       />
-      <g clip-path="url(#clip0_681_5665)">
+      <g clipPath="url(#clip0_681_5665)">
         <path
           d="M52.3413 72.0006L66.7413 86.4006L95.5413 57.6006"
           stroke="white"
-          stroke-width="6.16"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="6.16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>

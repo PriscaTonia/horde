@@ -17,6 +17,7 @@ import Link from "next/link";
 import SupportIcon from "@/icons/support";
 import Image from "next/image";
 import { useMedia } from "react-use";
+import { ApplicationRoutes } from "@/utils/routes";
 
 interface Props {
   onCloseSidebar: () => void;
@@ -43,44 +44,44 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
       id: 1,
       title: "Overview",
       icon:
-        pathname === "/dashboard/overview" ? (
+        pathname === ApplicationRoutes.OVERVIEW ? (
           <OverviewIcon fill="#FFFFFF" />
         ) : (
           <OverviewIcon />
         ),
-      path: "/dashboard/overview",
+      path: ApplicationRoutes.OVERVIEW,
     },
     {
       id: 2,
       title: "Budgets",
-      icon: pathname.includes("/dashboard/budgets") ? (
+      icon: pathname.includes(ApplicationRoutes.BUDGETS) ? (
         <BudgetIcon fill="#FFFFFF" />
       ) : (
         <BudgetIcon />
       ),
-      path: "/dashboard/budgets",
+      path: ApplicationRoutes.BUDGETS,
     },
     {
       id: 3,
       title: "Transactions",
       icon:
-        pathname === "/dashboard/transactions" ? (
+        pathname === ApplicationRoutes.TRANSACTIONS ? (
           <TransactionsIcon fill="#FFFFFF" />
         ) : (
           <TransactionsIcon />
         ),
-      path: "/dashboard/transactions",
+      path: ApplicationRoutes.TRANSACTIONS,
     },
     {
       id: 4,
       title: "Notifications",
       icon:
-        pathname === "/dashboard/notifications" ? (
+        pathname === ApplicationRoutes.NOTIFICATIONS ? (
           <NotificationsIcon fill="#FFFFFF" />
         ) : (
           <NotificationsIcon />
         ),
-      path: "/dashboard/notifications",
+      path: ApplicationRoutes.NOTIFICATIONS,
     },
   ];
 
@@ -89,23 +90,23 @@ const Sidebar = ({ onCloseSidebar, isOpen, isMobileSize }: Props) => {
       id: 1,
       title: "Support",
       icon:
-        pathname === "/dashboard/support" ? (
+        pathname === ApplicationRoutes.SUPPORT ? (
           <SupportIcon fill="#FFFFFF" />
         ) : (
           <SupportIcon />
         ),
-      path: "/dashboard/support",
+      path: ApplicationRoutes.SUPPORT,
     },
     {
       id: 2,
       title: "Settings",
       icon:
-        pathname === "/dashboard/settings" ? (
+        pathname === ApplicationRoutes.SETTINGS ? (
           <SettingsIcon fill="#FFFFFF" />
         ) : (
           <SettingsIcon />
         ),
-      path: "/dashboard/settings",
+      path: ApplicationRoutes.SETTINGS,
     },
   ];
 

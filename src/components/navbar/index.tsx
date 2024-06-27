@@ -6,8 +6,11 @@ import { Logo } from "@/modules";
 import { CloseIcon, HamburgerIcon } from "@/icons";
 import clsx from "clsx";
 import { useMediaQuery } from "@mantine/hooks";
+import { ApplicationRoutes } from "@/utils/routes";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const { push } = useRouter();
   const [show, setShow] = useState(false);
   const isMobileSize = useMediaQuery("(max-width: 1280px)", false);
 
@@ -44,13 +47,16 @@ const Navbar = () => {
         {/* buttons */}
         <div className="flex items-center gap-[46px]">
           <Link
-            href="/dashboard/overview"
+            href={ApplicationRoutes.AUTH_SIGNIN}
             className="rounded-lg px-8 py-3 text-lg font-semibold capitalize text-app-black-100 hover:bg-app-purple hover:bg-opacity-20"
           >
             Login
           </Link>
 
-          <Btn label="Sign up" />
+          <Btn
+            onclick={() => push(ApplicationRoutes.AUTH_SIGNUP)}
+            label="Sign up"
+          />
         </div>
       </section>
 

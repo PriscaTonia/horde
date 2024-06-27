@@ -44,3 +44,4 @@ export * from "./important-colored";
 export * from "./calendar-colored";
 export * from "./eye-close";
 export * from "./eye-open";
+export * from "./google";

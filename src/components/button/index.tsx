@@ -17,7 +17,7 @@ const Btn = ({
   icon,
 }: BtnProps) => {
   const class_name = clsx(
-    "flex gap-1 items-center justify-center",
+    "flex gap-1 items-center justify-center font-semibold",
     !custom && "border px-8 py-[10px] rounded-lg",
     size === "small" ? "w-fit" : "w-full",
     disabled && "bg-app-gray cursor-not-allowed bg-opacity-50 border-none",
