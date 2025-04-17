@@ -1,13 +1,13 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import { Btn } from "../button";
 import { Logo } from "@/modules";
 import { CloseIcon, HamburgerIcon } from "@/icons";
 import clsx from "clsx";
 import { useMediaQuery } from "@mantine/hooks";
 import { ApplicationRoutes } from "@/utils/routes";
 import { useRouter } from "next/navigation";
+import { Btn } from "../button";
 
 const Navbar = () => {
   const { push } = useRouter();
@@ -15,7 +15,7 @@ const Navbar = () => {
   const isMobileSize = useMediaQuery("(max-width: 1280px)", false);
 
   return (
-    <nav className="flex items-center justify-between gap-10 px-10 py-[34px] lg:px-[121px]">
+    <nav className="container flex items-center justify-between gap-10 px-10 py-[34px] lg:px-[121px]">
       <Logo />
 
       <section

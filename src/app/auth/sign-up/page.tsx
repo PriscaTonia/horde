@@ -28,7 +28,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 px-7 py-8 font-inter lg:px-[50px]">
+    <div className="container flex flex-col gap-8 px-7 py-8 font-inter lg:px-[50px]">
       <h1 className="flex flex-col gap-3 text-2xl font-extrabold text-app-black-200 lg:text-[32px]">
         Sign Up{" "}
         <span className="text-base font-normal text-[#667085]">

@@ -1,4 +1,5 @@
 "use client";
+
 import { Btn } from "@/components";
 import { EyeClose, EyeOpen, Google } from "@/icons";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -28,7 +29,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 px-7 py-8 font-inter lg:px-[50px]">
+    <div className="container flex flex-col gap-8 px-7 py-8 font-inter lg:px-[50px]">
       <h1 className="flex flex-col gap-3 text-2xl font-extrabold text-app-black-200 lg:text-[32px]">
         Login
         <span className="text-base font-normal text-[#667085]">

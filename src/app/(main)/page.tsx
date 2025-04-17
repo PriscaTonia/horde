@@ -6,11 +6,11 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-auto flex flex-col items-center justify-between gap-[124px] p-6 lg:px-[137px] lg:py-[56px]">
+    <main className="min-h-auto container flex flex-col items-center justify-between gap-[124px] p-6 lg:px-[137px] lg:py-[56px]">
       {/* hero section */}
       <section className="flex flex-col items-center gap-[42px]">
         <div className="flex flex-col items-center gap-6">
-          <h1 className="font-open_sans text-center text-[50px] font-bold leading-[60px] tracking-tight text-black lg:text-[72px] lg:leading-[80px]">
+          <h1 className="text-center font-open_sans text-[50px] font-bold leading-[60px] tracking-tight text-black lg:text-[72px] lg:leading-[80px]">
             Take <span className="text-app-purple">control</span> of your money
             one budget at a time
           </h1>
@@ -31,7 +31,7 @@ export default function Home() {
       {/* create a budget section */}
       <section className="flex flex-col items-center gap-[68px]">
         <div className="flex flex-col items-center gap-3 lg:gap-6">
-          <h2 className="font-inter text-center text-[30px] font-bold leading-[40px] tracking-tight text-black lg:text-[52px] lg:leading-[62px]">
+          <h2 className="text-center font-inter text-[30px] font-bold leading-[40px] tracking-tight text-black lg:text-[52px] lg:leading-[62px]">
             Create a budget that works for you
           </h2>
           <p className="text-center text-base text-black lg:max-w-[80%] lg:text-xl">
@@ -105,7 +105,7 @@ export default function Home() {
               className="col-span-1 flex flex-col gap-1 rounded-[14px] bg-white p-6"
             >
               <Switch />
-              <p className="font-inter mt-5 text-base font-semibold text-[#16192C]">
+              <p className="mt-5 font-inter text-base font-semibold text-[#16192C]">
                 {x.title}
               </p>
               <p>{x.text}</p>
@@ -117,7 +117,7 @@ export default function Home() {
       {/* financial empowerment section */}
       <section className="flex flex-col items-center gap-[68px]">
         <div className="flex flex-col items-center gap-6">
-          <h2 className="font-inter text-center text-[38px] font-bold leading-[40px] tracking-tight text-black lg:text-[69px] lg:leading-[62px]">
+          <h2 className="text-center font-inter text-[38px] font-bold leading-[40px] tracking-tight text-black lg:text-[69px] lg:leading-[62px]">
             Embark on your journey to financial empowerment
           </h2>
           <p className="text-center text-base text-black lg:max-w-[60%] lg:text-xl">

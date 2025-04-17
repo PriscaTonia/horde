@@ -22,7 +22,7 @@ export default function RootLayout({
         className={clsx(
           open_sans.variable,
           inter.variable,
-          "mx-auto w-full max-w-[1440px] bg-app-off-white",
+          "w-full bg-app-off-white",
         )}
       >
         <Provider>
