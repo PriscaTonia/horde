@@ -13,5 +13,11 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+Cypress.on("uncaught:exception", (err) => {
+  if (err.message.includes("NEXT_REDIRECT")) {
+    return false; // Prevent test from failing
+  }
+});
+
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";

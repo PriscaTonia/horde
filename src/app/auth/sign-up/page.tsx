@@ -46,6 +46,7 @@ const SignUp = () => {
             {...register("fullname")}
             placeholder="Enter your name"
             className={input_style}
+            data-test="signup-name-input"
           />
           <p className="text-xs text-red-600">{errors["fullname"]?.message}</p>
         </label>
@@ -58,6 +59,7 @@ const SignUp = () => {
             {...register("email")}
             placeholder="Enter your email"
             className={input_style}
+            data-test="signup-email-input"
           />
           <p className="text-xs text-red-600">{errors["email"]?.message}</p>
         </label>
@@ -72,6 +74,7 @@ const SignUp = () => {
               {...register("password")}
               placeholder="Create a password"
               className="w-full border-none px-0 py-4 text-base font-normal text-[#667085] outline-none focus:ring-0 "
+              data-test="signup-password-input"
             />
             {showPassword ? (
               <EyeClose
@@ -91,7 +94,12 @@ const SignUp = () => {
           <p className="text-xs text-red-600">{errors["password"]?.message}</p>
         </label>
 
-        <Btn label="Create account" type="submit" size="big" />
+        <Btn
+          data-test="signup-submit-button"
+          label="Create account"
+          type="submit"
+          size="big"
+        />
         <Btn
           label="Sign up with Google"
           type="submit"

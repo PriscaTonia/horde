@@ -3,9 +3,18 @@ describe("Show home page", () => {
     cy.visit("/");
   });
 
-  it("should display the homepage correctly", () => {
-    cy.contains("Take control of your money one budget at a time").should(
-      "be.visible",
-    ); // Adjust based on actual text
+  it("Displays correct header texts", () => {
+    cy.getByDataTest("horde-title").contains(
+      /Take control of your money one budget at a time/i,
+    );
+    cy.getByDataTest("horde-subtitle-2").contains(
+      /Create a budget that works for you/i,
+    );
+    cy.getByDataTest("horde-subtitle-3").contains(
+      /Elevate your budgeting experience with Horde/i,
+    );
+    cy.getByDataTest("horde-last-title").contains(
+      /Embark on your journey to financial empowerment/i,
+    );
   });
 });

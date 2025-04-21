@@ -15,6 +15,7 @@ const Btn = ({
   loading,
   type,
   icon,
+  ...rest
 }: BtnProps) => {
   const class_name = clsx(
     "flex gap-1 items-center justify-center font-semibold",
@@ -35,6 +36,7 @@ const Btn = ({
       className={class_name}
       loading={loading}
       unstyled
+      {...rest}
     >
       <span className="flex items-center gap-2">
         {icon}

@@ -47,6 +47,7 @@ const SignIn = () => {
             {...register("email")}
             placeholder="Enter your email"
             className={input_style}
+            data-test="login-email-input"
           />
           <p className="text-xs text-red-600">{errors["email"]?.message}</p>
         </label>
@@ -61,6 +62,7 @@ const SignIn = () => {
               {...register("password")}
               placeholder="Create a password"
               className="w-full border-none px-0 py-4 text-base font-normal text-[#667085] outline-none focus:ring-0 "
+              data-test="login-password-input"
             />
             {showPassword ? (
               <EyeClose
@@ -80,7 +82,12 @@ const SignIn = () => {
           <p className="text-xs text-red-600">{errors["password"]?.message}</p>
         </label>
 
-        <Btn label="Login" type="submit" size="big" />
+        <Btn
+          data-test="login-submit-button"
+          label="Login"
+          type="submit"
+          size="big"
+        />
         <Btn
           label="Sign in with Google"
           type="submit"
@@ -95,6 +102,7 @@ const SignIn = () => {
         <Link
           href={ApplicationRoutes.AUTH_SIGNUP}
           className="font-semibold text-black"
+          data-test="signup-link"
         >
           Sign up
         </Link>

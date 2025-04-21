@@ -3,6 +3,7 @@
  */
 
 export const enum ApplicationRoutes {
+  LANDING = "/",
   HOME = "/dashboard",
   OVERVIEW = "/dashboard/overview",
   BUDGETS = "/dashboard/budgets",
